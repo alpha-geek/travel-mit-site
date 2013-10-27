@@ -1,0 +1,20 @@
+{% extends "destinations/base_generic.html" %}
+{% block content %}
+<div style="padding:5%; width:100px; float:left;"><h3>Posts</h3></div><br />
+<div style="padding:5%; width:100px; float:left;"><h3>Last post</h3></div><br />
+<div style="width:80%; position:relative;">
+{% for forum in forums %}
+<table><tr>
+<td {% if forloop.last %}class="last"{% endif %}>
+<a href="{% url travelsite.forum.views.forum forum.pk %}">{{ forum.title }}</a></td>
+<td {% if forloop.last %}class="last"{% endif %}>
+{{ forum.num_posts }}</td>
+<td {% if forloop.last %}class="last"{% endif %}>
+{{ forum.last_post.short|linebreaksbr }}</td>
+<td {% if forloop.last%}class="last"{% endif %}>
+<a class="button" href="{% url travelsite.forum.views.forum forum.pk %}">VIEW</a>
+</td></tr>
+</table>
+{% endfor %}</div>
+
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base_generic.html" %}
+{% block title %}<title>Interest List</title>{% endblock %}
+{% block content %}
+    <h2>Interests</h2>
+    <ul>
+        {% for interest in object_list %}
+            <li><h3>{{ interest.interest_name }}</h3></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

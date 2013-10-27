@@ -1,0 +1,29 @@
+{% extends "base_places.html" %}
+
+{% block title %}{{ country.name }}{% endblock %}
+{% block main_content %}
+<h1>{{ name }}</h1>
+<h2>{{ country|upper }}</h2>
+{{ country.info }}
+{% endblock %}
+{% block popularplaces %}
+<h2>POPULAR CITIES</h2>
+{% if related_cities_list %}
+{% for city in related_cities_list %}
+    <a href = "http://marcelar.scripts.mit.edu/travelmit/destinations/cities/{{ city.id }}">{{ city.city_name|upper }}</a>
+{% endfor %}
+{% else %}  No cities listed. {% endif %}
+{% endblock %}
+{# {% block gallery %}
+<h2>GALLERY</h2>{{ country.gallery }}{% endblock %} #}
+{% block interesttags %}
+<h2>INTEREST TAGS</h2>
+{% if country.interest_set.all %}
+{% for interest in country.interest_set.all %}
+{{ interest.name|upper }}
+{% endfor %}
+{% else %}
+    No related tags.{# Have one to add? #}
+{% endif %}
+{% endblock %}
+

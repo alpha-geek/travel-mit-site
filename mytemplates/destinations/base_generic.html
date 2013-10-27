@@ -1,0 +1,233 @@
+{% load i18n %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+<head>
+    <style type="text/css">
+    div
+    {float:left;
+    }
+    div.content-link {
+    background-color:#00cc33;
+    position:relative;
+    width:auto;
+    max-width:150px;
+    float:center;
+    padding:0%;
+    margin:10px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    }
+    div.content-link a:link {
+    color:#000033;
+    text-decoration: none;   
+    }
+    div.content-link a:visited {
+    color:#000033;
+    text-decoration: none;
+    }
+
+    div.navigation a:link {
+    color:#012340;
+    text-decoration: none;
+    }
+    div.navigation a:visited {
+    color:#012340;
+    text-decoration: none;
+    }
+    div.logo
+    {
+    text-decoration: none;
+    position:absolute;
+    left:0%;
+    width:25%;
+    padding:0% 1% 5px 1%;
+    top:0%;
+    border-left:1px solid gray;
+    border-top:1px solid gray;
+    border-bottom:1px solid gray;
+    margin:0%;
+    height:50px;
+    background-color: black;
+    }
+    div.logo a:link {
+    text-decoration: none;
+    color:#FFFFFF;
+    }
+    div.logo a:visited {
+    text-decoration: none;
+    color:#FFFFFF;
+    }
+    div.searchbox
+    {position:absolute;
+    left:27%;
+    width:28%;
+    padding:0% 1% 5px 1%;
+    top:0%;
+    border-top:1px solid gray;
+    border-bottom:1px solid gray;
+    margin:0%;
+    height:50px;
+    background-color:#0022BB;
+    }
+    div.navigation
+    {position:absolute;
+    left:55%;
+    width:38%;
+    top:0%;
+    padding:0% 1% 5px 1%;
+    border-top:1px solid gray;
+    border-bottom:1px solid gray;
+    border-right:1px solid gray;
+    margin:0%;
+    height:50px;
+    background-color:#0022BB;
+    }
+    div.navlink
+    {
+    width=10%;
+    padding:5px;
+    border:2px solid black;
+    margin:0%;
+    height:25px;
+    background-color:#00EEDD;
+    font-size:90%;
+    float:right;
+    }
+    div.content
+    {position:relative;
+    width:70%;
+    top:55px;
+    padding:0% 1% 2% 1%;
+    margin:0.5%;
+    min-height:380px;
+    height:auto;
+    background-color:#FAFDF2;
+    border:5px solid #00EEDD;
+    font-size:13pt;
+    }
+    div.content a:link {
+    color:#3256CE;
+    }
+    div.content a:visited {
+    color:#3256CE;
+    }
+    div.profbox {
+    position:relative;
+    top:55px;
+    width:15%;
+    padding:0% 1% 2% 5%;
+    margin:0.5%;
+    min-height:50px;
+    height: auto;
+    background-color: #FAFDF2;
+    border:2px dashed gray;
+    float:right;
+    font-size:12pt;
+    }
+    div.profbox a:link {
+    color:#3256CE;
+    }
+    div.profbox a:visited {
+    color:#3256CE;
+    }
+    div.footer
+    {position:relative;
+    top:auto;
+    width:95%;
+    border:0.3% solid black;
+    margin:4% 0% 0% 0%;
+    height:50px;
+    padding:0%;
+    float:left, bottom;
+    text-align:center;
+    background-color:#012340;
+    color:#FFFFFF;
+    }
+    div.footer a:link {
+    color:#FFFFFF;
+    text-decoration: none;
+    }
+    div.footer a:visited {
+    color:#FFFFFF;
+    text-decoration: none;
+    }
+    h1,h2,h3,p
+    {
+    color:#012340;
+    font-family:"georgia";
+    }
+    h1
+    {font-size:20pt;
+    }
+    h2
+    {font-size:16pt;
+    }
+    h3
+    {font-size:14pt;
+    }
+    .main
+    {background: #FFFFFF;
+    background filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='gray');
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFFFFF), to(gray));
+    background: -moz-linear-gradient(top, #FFFFFF, gray);
+    text-align:left;
+    font-size:10.2pt;
+    }
+    </style>
+    {% block title %}<title>Travel MIT</title>{% endblock %}
+</head>
+
+<body class="main">
+<div class="logo">
+<h2><a href="http://marcelar.scripts.mit.edu/travelmit/">TravelMIT
+</a></h2></div>
+<div class="searchbox">
+<h3><div style="color:#FFFFFF"></div></h3></div>
+<div class="navigation">
+{% block navigation %}
+
+<a href="http://marcelar.scripts.mit.edu/travelmit/destinations/location_dest">
+<div class="navlink">LOCATIONS</div></a>
+<a href="http://marcelar.scripts.mit.edu/travelmit/destinations/byinterest"><div class="navlink">INTERESTS</div></a>
+<a href="http://marcelar.scripts.mit.edu/travelmit/destinations/gallery"><div class="navlink">GALLERY</div></a>
+<a href="http://marcelar.scripts.mit.edu/travelmit/forum/main"><div class="navlink">FORUM</div></a>
+<a href="http://marcelar.scripts.mit.edu/travelmit/profile/{{ user }}"><div class="navlink">PROFILE</div></a>
+{% endblock %}
+</div>
+
+<div class="content">
+{% block content %}
+{% endblock content %}
+</div>
+<div class="profbox">
+{% if not user.is_authenticated %}
+
+<p><a href="http://marcelar.scripts.mit.edu/travelmit/accounts/register">Sign Up</a></p>
+<p>
+{% block login_side %}
+<div style="padding:5px;">
+<a href="http://marcelar.scripts.mit.edu/travelmit/accounts/login">Login</a></div><br />
+</div>
+{% endblock %}
+</p>
+{% endif %}
+{% if user.is_authenticated %}<p><a href="http://marcelar.scripts.mit.edu/travelmit/accounts/logout">Logout</a></p>{% endif %}
+</div>
+<div class="footer">
+{% block footer %}
+<div style="text-align:center; margin:10px"><a href="http://marcelar.scripts.mit.edu/travelmit/about">About</a></div>
+<div style="text-align:center; margin:10px"><a href="http://marcelar.scripts.mit.edu/travelmit/contact">Contact</a></div>
+{% if not user.is_authenticated %}
+<div style="text-align:center; margin:10px"><a href="http://marcelar.scripts.mit.edu/travelmit/accounts/login">Login</a></div>
+<div style="text-align:center; margin:10px"><a href="http://marcelar.scripts.mit.edu/travelmit/accounts/register">Sign Up</a></div>
+{% endif %}
+{% if user.is_authenticated %}
+<div style="text-align:center;margin:10px"><a href="http://marcelar.scripts.mit.edu/travelmit/accounts/logout">Logout</a></div>
+{% endif %}
+<div style="text-align:center;float:right; margin:10px"><img src="http://web.mit.edu/graphicidentity/images/s6_r_g.jpg" width="100px" height="30px" /></div>
+<div style="text-align:center;float:right; margin:10px">travelmit785@gmail.com</div>
+{% endblock %}
+</div>
+
+</body>
+</html>

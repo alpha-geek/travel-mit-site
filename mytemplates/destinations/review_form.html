@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block title %}<title>Add Destination Info!</title>{% endblock %}
+{% block content %}
+{% if form.errors %}<p>There was an error - please try again.
+</p>{% endif %}
+<h2>Review Submission</h2>
+<form method="POST" action="{{ app.path }}">{% csrf_token %}
+<h3>Add a Review</h3>
+        {% for field in review_form %}
+            {{ field.label_tag }}: {{ field }}
+<br />
+<br />
+        {% endfor %}
+<input type="submit" value="Save" class="submit" name="submit" />
+
+</form>
+<h3><a href="http://marcelar.scripts.mit.edu/travelmit/destinations/city_form">Add your Destination's city first, if it's not in our database!</a></h3>
+
+{% endblock %}

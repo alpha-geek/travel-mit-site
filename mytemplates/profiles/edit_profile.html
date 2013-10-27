@@ -1,0 +1,18 @@
+{% extends "destinations/base_generic.html" %}
+{% block title %}Edit Profile{% endblock %}
+ 
+{% block content %}
+<h1>Edit {{ user }}'s Profile</h1>
+
+<form method="POST" action="{{ app.path }}">{% csrf_token %}
+        {% for field in form %}
+            {{ field.label_tag }}: {{ field }}
+<br />
+<br />
+        {% endfor %}
+<input type="submit" value="Update" id="submit" class="submit" name="submit" />
+
+</form>
+
+ 
+{% endblock content %}

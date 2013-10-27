@@ -1,0 +1,22 @@
+{% extends "destinations/base_generic.html" %}
+{% block content %}
+<h1>Profile</h1>
+<h2>Username: {{ profile.user }}</h2>
+{% if profile.avatar %}
+ <img src="{{ MEDIA_URL }}image/{{ profile.avatar }}" /><img src= "{{ profile.avatar.url }}" />
+{% endif %}
+<br />
+{% if profile.hometown %}
+Hometown: {{ profile.hometown }}
+{% endif %}
+<br />
+Name: {% if profile.first_name %}{{ profile.first_name }}{% endif %}{% if profile.last_name %} {{ profile.last_name }}{% endif %}
+<br />
+<br />
+<h3>Bio:</h3>
+<p>
+{{ profile.bio }}
+</p>
+<h4><a href="http://marcelar.scripts.mit.edu/travelmit/profile/edit"><div class="content-link">Edit Profile</div></a></h4>
+<h4><a href="http://marcelar.scripts.mit.edu/travelmit/destinations/form_home"><div class="content-link">Add or Review a Place</div></a></h4>
+{% endblock %}

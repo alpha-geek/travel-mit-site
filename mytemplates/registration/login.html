@@ -1,0 +1,29 @@
+{% extends "registration/login_side.html" %}
+{% load i18n %}
+{% block content %}
+{% if form.errors %}<p>Your username and password didn't match. Please try again
+.</p>{% endif %}
+<div style="padding:5px;">
+<h2>Login</h2></div>
+<div style="padding:5px;">
+<form action="{{ app.path }}" method="post" id="login-form">{% csrf_token %}
+<div style="padding:5px;">
+<label for="id_username">{% trans 'Username' %}</label>
+<input type="text" name="username" id="id_username" />
+</div><br />
+<div class="form-row" style="padding:5px;">
+<label for="id_password">{% trans 'Password:' %}</label>
+<input type="password" name="password" id="id_password" />
+<input type="hidden" name="this_is_the_login_form" value="1" />
+</div><br />
+<div class="submit-row">
+<input type="submit" value="{% trans 'Log in' %}" />
+</div>
+</form>
+
+<script type="text/javascript">
+document.getElementByID('id_username').focus()
+</script>
+</div>
+{% endblock %}
+

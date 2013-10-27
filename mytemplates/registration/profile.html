@@ -1,0 +1,4 @@
+{% extends "destinations/base_generic.html" %}
+{% block content %}
+{{ request.user.get_profile() }}
+{% endblock %}

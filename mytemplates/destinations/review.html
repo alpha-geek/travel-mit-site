@@ -1,0 +1,6 @@
+{% extends base_generic.html %}
+{% block content %}
+<div><h2><a href="http://marcelar.scripts.mit.edu/travelmit/destinations/{{ review.destination_id }}">{{ review.destination.name }}</a></h2></div>
+<div><h3>Review</h3></div>
+<p>{{ review.review_content }}</p>
+{% endblock %}
