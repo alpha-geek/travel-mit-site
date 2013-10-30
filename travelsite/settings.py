@@ -133,7 +133,7 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     os.path.join(PROJECT_DIR, "mytemplates"),
     os.path.join(PROJECT_DIR, "mytemplates/admin"),
-    os.path.join(PROJECT_DIR, "mytemplates/admin/destinations"),
+    os.path.join(PROJECT_DIR, "mytemplates/destinations"),
     #"/Users/marcelar/djangosites/travel-mit-site/mytemplates",
     #"/Users/marcelar/djangosites/travel-mit-site/mytemplates/admin",
     #"/Users/marcelar/djangosites/travel-mit-site/mytemplates/destinations",
