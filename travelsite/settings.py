@@ -132,6 +132,8 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     os.path.join(PROJECT_DIR, "mytemplates"),
+    os.path.join(PROJECT_DIR, "mytemplates/admin"),
+    os.path.join(PROJECT_DIR, "mytemplates/admin/destinations"),
     #"/Users/marcelar/djangosites/travel-mit-site/mytemplates",
     #"/Users/marcelar/djangosites/travel-mit-site/mytemplates/admin",
     #"/Users/marcelar/djangosites/travel-mit-site/mytemplates/destinations",
