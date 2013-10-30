@@ -125,14 +125,18 @@ ROOT_URLCONF = 'travelsite.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'travelsite.wsgi.application'
-
+import os.path
+PROJECT_DIR = os.path.dirname(__file__)
 TEMPLATE_DIRS = (
  # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    "/Users/marcelar/djangosites/travel-mit-site/mytemplates",
-    "/Users/marcelar/djangosites/travel-mit-site/mytemplates/admin",
-    "/Users/marcelar/djangosites/travel-mit-site/mytemplates/destinations",
+    os.path.join(PROJECT_DIR, "mytemplates"),
+    os.path.join(PROJECT_DIR, "mytemplates/admin"),
+    os.path.join(PROJECT_DIR, "mytemplates/destinations"),
+    #"/Users/marcelar/djangosites/travel-mit-site/mytemplates",
+    #"/Users/marcelar/djangosites/travel-mit-site/mytemplates/admin",
+    #"/Users/marcelar/djangosites/travel-mit-site/mytemplates/destinations",
 )
 
 INSTALLED_APPS = (
