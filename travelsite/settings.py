@@ -11,13 +11,21 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'marcelar+travelmit',
-        'USER': 'marcelar',
-        'PASSWORD': 'laetUSWORLD333',
-        'HOST': 'sql.mit.edu',
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'traveldbdef',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '',
     }
+    #'default': {
+     #   'ENGINE': 'django.db.backends.mysql',
+      #  'NAME': 'marcelar+travelmit',
+       # 'USER': 'marcelar',
+        #'PASSWORD': 'laetUSWORLD333',
+        #'HOST': 'sql.mit.edu',
+        #'PORT': '3306',                      # Set to empty string for default. Not used with sqlite3.
+    #}
 }
 
 # Local time zone for this installation. Choices can be found here:
@@ -50,7 +58,7 @@ MEDIA_ROOT = '/media/'
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = 'http://marcelar.scripts.mit.edu/travelmit/media/'
+MEDIA_URL = 'http://marcelar.scripts.mit.edu/travelmit/media/' #Will change
 # Example: "/home/media/media.lawrence.com/static/"STATIC_ROOT = ''
 
 
@@ -93,6 +101,7 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.eggs.Loader',
 )
 
+
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",
     "django.core.context_processors.debug",
@@ -121,9 +130,9 @@ TEMPLATE_DIRS = (
  # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    "/mit/marcelar/Scripts/django/mytemplates",
-    "/mit/marcelar/Scripts/django/mytemplates/admin",
-    "/mit/marcelar/Scripts/django/mytemplates/destinations",
+    "/Users/marcelar/djangosites/travel-mit-site/mytemplates",
+    "/Users/marcelar/djangosites/travel-mit-site/mytemplates/admin",
+    "/Users/marcelar/djangosites/travel-mit-site/mytemplates/destinations",
 )
 
 INSTALLED_APPS = (
@@ -150,7 +159,7 @@ INSTALLED_APPS = (
 )
 
 LOGIN_REDIRECT_URL = 'http://marcelar.scripts.mit.edu/travelmit/'
-AUTH_PROFILE_MODULE = 'profiles.UserProfile'
+AUTH_PROFILE_MODULE = 'profiles.Profile' #May have to change back
 ACCOUNT_ACTIVATION_DAYS = 7
 
 
@@ -184,8 +193,8 @@ LOGGING = {
 }
 
 # Parse database configuration from $DATABASE_URL
-import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
+#import dj_database_url
+#DATABASES['default'] =  dj_database_url.config()
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
