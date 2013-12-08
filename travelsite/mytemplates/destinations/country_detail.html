@@ -10,7 +10,7 @@
 <h2>POPULAR CITIES</h2>
 {% if related_cities_list %}
 {% for city in related_cities_list %}
-    <a href = "http://marcelar.scripts.mit.edu/travelmit/destinations/cities/{{ city.id }}">{{ city.city_name|upper }}</a>
+    <a href = "/destinations/cities/{{ city.id }}">{{ city.city_name|upper }}</a>
 {% endfor %}
 {% else %}  No cities listed. {% endif %}
 {% endblock %}

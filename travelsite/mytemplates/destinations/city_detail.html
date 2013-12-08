@@ -4,7 +4,7 @@
 {% block main_content %}
 <h1>{{ name }}</h1>
 <h3>
-Country: <a href="http://marcelar.scripts.mit.edu/travelmit/destinations/countries/{{ parent_country.id }}">{{ parent_country.country_name }}</a></h3>
+Country: <a href="/destinations/countries/{{ parent_country.id }}">{{ parent_country.country_name }}</a></h3>
 {# <h2>INTRODUCTION</h2> #}
 {{ city.info }}
 {% endblock %}
@@ -12,7 +12,7 @@ Country: <a href="http://marcelar.scripts.mit.edu/travelmit/destinations/countri
 <h2>POPULAR DESTINATIONS</h2>
 {% if destination_list %}
 {% for destination in destination_list %}
-    <a href = "http://marcelar.scripts.mit.edu/travelmit/destinations/{{ destination.id }}">{{ destination.name|upper }}</a>
+    <a href = "/destinations/{{ destination.id }}">{{ destination.name|upper }}</a>
 {% endfor %}
 {% else %}
    No attractions listed.{# Have one to add? #}

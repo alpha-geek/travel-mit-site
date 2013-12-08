@@ -5,7 +5,7 @@
     <h2>Cities</h2>
     <ul>
         {% for city in object_list %}
-            <h3><li><a href="http://marcelar.scripts.mit.edu/travelmit/destinations/cities/{{ city.id }}">{{ city.city_name }}</a></li></h3>
+            <h3><li><a href="/destinations/cities/{{ city.id }}">{{ city.city_name }}</a></li></h3>
         {% endfor %}
     </ul>
 {% endblock %}

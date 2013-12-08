@@ -3,7 +3,7 @@
 {% block login_side %}
 {% if form.errors %}<p>Your username and password didn't match. Please try again.</p>{% endif %}
 <div style="padding:5px;">
-<a href="http://marcelar.scripts.mit.edu/travelmit/accounts/login">Login</a></div><br />
+<a href="/accounts/login">Login</a></div><br />
 <form method="POST" action="{{ app.path }}">
 {% csrf_token %}
 <div style="padding:5px;">

@@ -3,7 +3,7 @@
 {% block title %}<title>Add Destination Info!</title>{% endblock %}
 {% block content %}
 <h2>Destination Additions/Edits</h2>
-<form method="post" action="http://marcelar.scripts.mit.edu/travelmit/destinations/dest_form_complete/">{% csrf_token %}
+<form method="post" action="/destinations/dest_form_complete/">{% csrf_token %}
 <h3>Add a Destination</h3>
   {#  {{ formset.management_form }}#}
     {% for form in formset %}
@@ -14,7 +14,7 @@
         {% endfor %}
 <input type="submit" label="Save">
     {% endfor %}
-<h3><a href="http://marcelar.scripts.mit.edu/travelmit/destinations/city_form">Add your Destination's city first if it's not in our database!</a></h3>
+<h3><a href="/destinations/city_form">Add your Destination's city first if it's not in our database!</a></h3>
 
 </form>
 {% endblock %}
