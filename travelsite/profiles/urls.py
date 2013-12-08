@@ -22,7 +22,7 @@ redirect. If you don't use that name, remember to explicitly pass
 (?P<username>\w+)/$ for adding username
 """
 
-from django.conf.urls.defaults import *
+from django.conf.urls import patterns, url
 
 from travelsite.profiles import views
 

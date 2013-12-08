@@ -7,14 +7,10 @@ django-registration 1.0. For new installs, use
 
 """
 
-import warnings
-
-warnings.warn("include('registration.urls') is deprecated; use include('registration.backends.default.urls') instead.",
-              PendingDeprecationWarning)
 
 from registration.backends.default.urls import *
 from django.conf import settings
-from django.conf.urls.defaults import patterns, include, url
+from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView, ListView, DetailView
 from travelsite.destinations.models import *
 from django.contrib import admin
@@ -35,6 +31,6 @@ urlpatterns = patterns('',
     )),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^profile/', include('travelsite.profiles.urls')),
-    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+    url(r'^media/(?P<path>.*)$', 'django.views.`.serve', {
         'document_root': settings.MEDIA_ROOT})
 )

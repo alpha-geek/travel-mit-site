@@ -12,11 +12,11 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'traveldbdef',
-        'USER': '',
+        'NAME': 'traveldb',
+        'USER': 'dev',
         'PASSWORD': '',
         'HOST': 'localhost',
-        'PORT': '',
+        'PORT': '5432',
     }
     #'default': {
      #   'ENGINE': 'django.db.backends.mysql',
@@ -75,12 +75,6 @@ STATIC_URL = '/static/'
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
 ADMIN_MEDIA_PREFIX = '/__scripts/django/media/'
 
-# Additional locations of static files
-STATICFILES_DIRS = (
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-)
 
 # List of (WHAT WAS HERE?) 
 # various locations.
@@ -125,18 +119,19 @@ ROOT_URLCONF = 'travelsite.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'travelsite.wsgi.application'
-import os.path
-PROJECT_DIR = os.path.dirname(__file__)
+#import os.path
+#PROJECT_DIR = os.path.dirname(__file__)
 TEMPLATE_DIRS = (
  # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.join(PROJECT_DIR, "mytemplates"),
-    os.path.join(PROJECT_DIR, "mytemplates/admin"),
-    os.path.join(PROJECT_DIR, "mytemplates/destinations"),
-    #"/Users/marcelar/djangosites/travel-mit-site/mytemplates",
-    #"/Users/marcelar/djangosites/travel-mit-site/mytemplates/admin",
-    #"/Users/marcelar/djangosites/travel-mit-site/mytemplates/destinations",
+    #os.path.join(PROJECT_DIR, "mytemplates"),
+    #os.path.join(PROJECT_DIR, "mytemplates/admin"),
+    #os.path.join(PROJECT_DIR, "mytemplates/destinations"),
+    "/Users/marcelar/djangosites/travel-mit-site/travelsite/mytemplates",
+    "/Users/marcelar/djangosites/travel-mit-site/travelsite/mytemplates/admin",
+    "/Users/marcelar/djangosites/travel-mit-site/travelsite/mytemplates/destinations",
+    "/Users/marcelar/djangosites/travel-mit-site/travelsite/mytemplates/css",
 )
 
 INSTALLED_APPS = (
@@ -197,8 +192,8 @@ LOGGING = {
 }
 
 # Parse database configuration from $DATABASE_URL
-import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
+#import dj_database_url
+#DATABASES['default'] =  dj_database_url.config()
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -209,9 +204,10 @@ ALLOWED_HOSTS = ['*']
 # Static asset configuration
 import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
+    '/var/www/static/',
 )

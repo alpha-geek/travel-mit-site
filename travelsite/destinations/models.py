@@ -2,7 +2,7 @@ from django.db import models
 from django import forms
 from django.forms import ModelForm
 
-    
+
 class Interest(models.Model):
     interest_name = models.CharField(max_length=20) 
 
