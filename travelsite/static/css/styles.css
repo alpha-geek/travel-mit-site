@@ -2,9 +2,9 @@
 @import url("{% static "css/reset.css" %}");
     body
     {
-    /*background-image: url("../images/subtle-carbon.png");
-    background-repeat:repeat;*/
-    background-color:grey;
+    background-image:"/static/images/subtle-carbon.png";
+    background-repeat:repeat;
+    background-color:#CCFFFF;
     font-family: Helvetica,Arial,'Lucida Sans Unicode';
     line-height: 1.5;
     text-align:left;
@@ -87,7 +87,7 @@
         background-color: #083D8B;
         margin: 30px 0 0 10%;
         padding:140px 80% 0 0;
-        border-bottom: green solid 2px;
+        border-bottom: navy solid 2px;
     }
 
     li.rightHeader {
