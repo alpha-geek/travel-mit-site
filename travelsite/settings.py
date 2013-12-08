@@ -191,7 +191,7 @@ LOGGING = {
     }
 }
 
-# Parse database configuration from $DATABASE_URL
+# Parse database configuration from $DATABASE_URL for Heroku use
 import dj_database_url
 DATABASES['default'] =  dj_database_url.config()
 

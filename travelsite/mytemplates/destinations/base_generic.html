@@ -6,6 +6,7 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="{% static "css/styles.css" %}" type="text/css" media="all" />
+    <script type="text/javascript" src="{% static "scripts/d3/d3.v3.js" %}"></script>
     <title>{% block title %}{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -19,8 +20,8 @@
         <nav><ul>
         <li><a href ="/"><em>Far Sighted Travel</em></a></li>
         <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
         <li><a href="/destinations/location_dest">Map</a></li>
+        <li><a href="/about">About</a></li>
         <li><a href="/profile/{{ user }}">Profile</a></li>
         <li class = "rightHeader"><a href="../search">Search</a></li>
         </ul></nav>
@@ -28,23 +29,12 @@
 
     </header>
 <div class="mainContent">
-    <div class="content">
+    
     {% block content %}
     {% endblock content %}
-    </div>
-<aside class="top-sidebar">
-    {% if not user.is_authenticated %}
-        <p><a href="../accounts/register">Sign Up</a></p>
-        <p>
-        {% block login_side %}
-        <a href="../accounts/login">Login</a></div><br />
-        {% endblock %}
-        </p>
-    {% endif %}
-    {% if user.is_authenticated %}
-    <p><a href="../accounts/logout">Logout</a></p>
-    {% endif %}
-</aside>
+    
+    {% block top-sidebar %}
+    {% endblock top-sidebar %}
 </div>
 </div>
 

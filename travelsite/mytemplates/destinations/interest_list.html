@@ -1,10 +1,12 @@
 {% extends "base_generic.html" %}
-{% block title %}<title>Interest List</title>{% endblock %}
+{% block title %}Interest List{% endblock %}
 {% block content %}
-    <h2>Interests</h2>
+<article class = "top-content"><content>
+	<header>
+    <h2>Interests</h2></header>
     <ul>
         {% for interest in object_list %}
             <li><h3>{{ interest.interest_name }}</h3></li>
         {% endfor %}
-    </ul>
+    </ul></content></article>
 {% endblock %}

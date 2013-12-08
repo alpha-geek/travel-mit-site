@@ -1,10 +1,12 @@
 {% extends "base_generic.html" %}
 
-{% block title %}<title>Add Destination Info!</title>{% endblock %}
+{% block title %}Add Destination Info!{% endblock %}
 {% block content %}
+<div class = "content">
+<article class = "top-content"><content>
 {% if form.errors %}<p>There was an error - make sure you've filled all required fields.
 </p>{% endif %}
-<h1>Destination Additions</h1>
+<header><h1>Destination Additions</h1></header>
 <form method="POST" action="{{ app.path }}">
 
 {#http://marcelar.scripts.mit.edu/travelmit/destinations/dest_form_complete/">#}
@@ -20,4 +22,6 @@
 <h3>If we don't have it yet...</h3>
 <h4><a href="/destinations/city_form"><div class="content-link">Add a City</div></a></h4>
 <h4><a href="/destinations/country_form"><div class="content-link">Add a Country</div></a></h4>
+</content></article>
+</div>
 {% endblock %}

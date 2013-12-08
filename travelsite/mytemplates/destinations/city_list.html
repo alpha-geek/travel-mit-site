@@ -2,10 +2,16 @@
 {% block title %}<title>City List</title>{% endblock %}
 
 {% block content %}
-    <h2>Cities</h2>
+<div class = "content-full">
+    <article class = "top-content">
+	<content>
+    <header><h2>Cities</h2></header>
     <ul>
         {% for city in object_list %}
             <h3><li><a href="/destinations/cities/{{ city.id }}">{{ city.city_name }}</a></li></h3>
         {% endfor %}
     </ul>
+</content>
+</article>
+</div>
 {% endblock %}

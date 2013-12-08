@@ -3,6 +3,7 @@
 Far Sighted Travel | Home
 {% endblock %}
 {% block content %}
+<div class = "content">
 <article class = "top-content">
 	<header><h2>Welcome to Far Sights!</h2></header>
 	<content>
@@ -24,5 +25,21 @@ Far Sighted Travel | Home
     <a href="/destinations/{{ destination.id }}/">{{ destination.name }}</a></li>
     {% endfor %}
     </ul>
-</article>
+</article></div>
 	{% endblock %}
+{% block top-sidebar %}
+<aside class="top-sidebar">
+	{% if not user.is_authenticated %}
+        <p><a href="../accounts/register">Sign Up</a></p>
+        <p>
+        {% block login_side %}
+        <a href="../accounts/login">Login</a></div><br />
+        {% endblock %}
+        </p>
+    {% endif %}
+    {% if user.is_authenticated %}
+    <p><a href="../accounts/logout">Logout</a></p>
+    {% endif %}
+</aside>
+
+{% endblock %}

@@ -7,6 +7,20 @@ from django.contrib.auth.decorators import login_required
 from django.forms.models import modelformset_factory
 from django.core.context_processors import csrf
 #from django.views.decorators.csrf import csrf_protect
+import json
+
+#def location_dest_view(request):
+#    json_data = open('/static/json/worldcountries.json')   
+#    worldata1 = json.load(json_data)
+#    worlddata2 = json.dumps(json_data)
+#    json_data.close()
+#    t = loader.get_template('destinations/location_dest.html')
+#    c = Context ({
+#        'worldmap': worlddata2 
+#    })
+#    return HttpResponse(t.render(c)) 
+    
+
 def handle_uploaded_file(f):
     fileplace = open('some/file/name.txt','wb+')
     for chunk in f.chunks():
@@ -180,7 +194,7 @@ def dest_detail(request, destination_id):
     p = get_object_or_404(Destination, pk=destination_id)
     name = p.name
     review_list = p.review_set.all().order_by('-id')[:5]
-    city = p.city,
+    city = p.city
 #    q = get_object_or_404(City, pk=city.id)
  #   country = q.parent_country,
     t = loader.get_template('destinations/dest_detail.html')

@@ -2,28 +2,38 @@
 
 {% block title %}{{ city.city_name }}{% endblock %}
 {% block main_content %}
-<h1>{{ name }}</h1>
+<article class = "top-content"><content>
+	<header><h1>{{ name }}</h1>
 <h3>
-Country: <a href="/destinations/countries/{{ parent_country.id }}">{{ parent_country.country_name }}</a></h3>
-{# <h2>INTRODUCTION</h2> #}
+Country: <a href="/destinations/countries/{{ parent_country.id }}">{{ parent_country.country_name }}</a></h3></header>
 {{ city.info }}
 {% endblock %}
+
 {% block popularplaces %}
-<h2>POPULAR DESTINATIONS</h2>
+
+	<header><h3>POPULAR DESTINATIONS</h3></header>
 {% if destination_list %}
+<ul>
 {% for destination in destination_list %}
-    <a href = "/destinations/{{ destination.id }}">{{ destination.name|upper }}</a>
+    <li><a href = "/destinations/{{ destination.id }}">{{ destination.name|upper }}</a></li>
 {% endfor %}
+</ul>
 {% else %}
    No attractions listed.{# Have one to add? #}
 {% endif %}
+</content></article>
 {% endblock %}
+
 {% block gallery %}
-<h2>GALLERY</h2>
+
+	<header><h3>GALLERY</h3></header>
 {{ city.gallery }}
+
 {% endblock %}
+
 {% block interesttags %}
-<h2>INTEREST TAGS</h2>
+<aside class = "top-sidebar"><content><header>
+<h2>INTEREST TAGS</h2></header>
 {% if related_interests %}
 {% for interest in related_interests %}
 {{ interest.interest_name|upper }}
@@ -31,4 +41,5 @@ Country: <a href="/destinations/countries/{{ parent_country.id }}">{{ parent_cou
 {% else %}
     No related tags.{# Have one to add? #}
 {% endif %}
+</content></aside>
 {% endblock %}

@@ -1,9 +1,10 @@
 {% extends "base_places.html" %}
 
 {% block title %}{{ destination.name }}{% endblock %}
+
 {% block main_content %}
-<h1>{{ name }}</h1>
-<h2>Reviews</h2>
+<article class = "top-content"><content><header><h1>{{ name }}</h1>
+<h2>Reviews</h2></header>
 <ul>
 {% if review_list %}
 {% for review in review_list %}
@@ -14,15 +15,17 @@
 No reviews listed.
 {% endif %}
 {% endblock %}
-{% block popularplaces %}
-<h3>
 
-</h3>
-{% endblock %}
+{% block gallery %}<h2>GALLERY</h2>{{ city.gallery }}{% endblock %}
+
+{% block popularplaces %}
 {# similar places block #}
-{#{% block gallery %}<h2>GALLERY</h2>{{ city.gallery }}{% endblock %}#}
+</content></article>
+{% endblock %}
+
 {% block interesttags %}
-<h2>INTEREST TAGS</h2>
+<aside class = "top-sidebar"><content><header>
+<h2>INTEREST TAGS</h2></header>
 {% if destination.interest_set.all %}
 {% for interest in destination_interest_set.all %}
 {{ interest.name }}
@@ -30,4 +33,5 @@ No reviews listed.
 {% else %}
     Coming Soon{# Have one to add? #}
 {% endif %}
+</content></aside>
 {% endblock %}

@@ -3,7 +3,8 @@
 {% block title %}<title>Registration</title>{% endblock %}
 
 {% block content %}
-
+<div class = "content">
+<div class = "top-content">
 {% if form.errors %}
 <p>There was a password match or other error; please try again.</p>
 {% endif %}
@@ -19,4 +20,6 @@
 <input type="hidden" name="next" value="{{ next }}" />
 </p>
 </form>
+</div>
+</div>
 {% endblock %}

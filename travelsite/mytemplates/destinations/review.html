@@ -1,6 +1,8 @@
 {% extends base_generic.html %}
 {% block content %}
-<div><h2><a href="/destinations/{{ review.destination_id }}">{{ review.destination.name }}</a></h2></div>
-<div><h3>Review</h3></div>
-<p>{{ review.review_content }}</p>
+<div class = "content">
+<article class = "top-content"><header><h2><a href="/destinations/{{ review.destination_id }}">{{ review.destination.name }}</a></h2>
+<h3>Review</h3></header>
+<content><p>{{ review.review_content }}</p></content>
+</div>
 {% endblock %}

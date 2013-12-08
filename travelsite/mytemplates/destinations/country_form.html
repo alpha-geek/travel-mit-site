@@ -1,10 +1,12 @@
 {% extends "base_generic.html" %}
 
-{% block title %}<title>Add Destination Info!</title>{% endblock %}
+{% block title %}Add Destination Info!{% endblock %}
 {% block content %}
+<div class = "content">
+<article class = "top-content"><content>
 {% if form.errors %}<p>There was an error - please try again.
 </p>{% endif %}
-<h2>Country Additions</h2>
+<header><h2>Country Additions</h2></header>
 <form method="POST" action="{{ app.path }}">{% csrf_token %}
 <h3>Add a Country</h3>
         {% for field in country_form %}
@@ -17,4 +19,6 @@
 </form>
 <h4><a href="/destinations/city_form"><div class="content-link">Add a City</div></a></h4>
 <h4><a href="/destinations/dest_form"><div class="content-link">Add a Destination</div></a></h4>
+</article></content>
+</div>
 {% endblock %}

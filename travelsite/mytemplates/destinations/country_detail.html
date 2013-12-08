@@ -2,22 +2,35 @@
 
 {% block title %}{{ country.name }}{% endblock %}
 {% block main_content %}
-<h1>{{ name }}</h1>
-<h2>{{ country|upper }}</h2>
+<article class = "top-content"><content>
+	<header><h1>{{ name }}</h1>
+<h2>{{ country|upper }}</h2></header>
 {{ country.info }}
 {% endblock %}
+
 {% block popularplaces %}
-<h2>POPULAR CITIES</h2>
+
+	<header><h3>POPULAR CITIES</h3></header>
 {% if related_cities_list %}
+<ul>
 {% for city in related_cities_list %}
-    <a href = "/destinations/cities/{{ city.id }}">{{ city.city_name|upper }}</a>
+    <li><a href = "/destinations/cities/{{ city.id }}">{{ city.city_name|upper }}</a></li>
 {% endfor %}
+</ul>
 {% else %}  No cities listed. {% endif %}
+</content></article>
 {% endblock %}
-{# {% block gallery %}
-<h2>GALLERY</h2>{{ country.gallery }}{% endblock %} #}
+
+{% block gallery %}
+
+	<header><h3>GALLERY</h3></header>
+{{ country.gallery }}
+
+{% endblock %}
+
 {% block interesttags %}
-<h2>INTEREST TAGS</h2>
+<aside class="top-sidebar"><content><header>
+<h2>INTEREST TAGS</h2></header>
 {% if country.interest_set.all %}
 {% for interest in country.interest_set.all %}
 {{ interest.name|upper }}
@@ -25,5 +38,6 @@
 {% else %}
     No related tags.{# Have one to add? #}
 {% endif %}
+</content></aside>
 {% endblock %}
 
