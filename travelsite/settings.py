@@ -1,5 +1,5 @@
 # Django settings for travelsite project.
-
+import os
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -120,14 +120,14 @@ ROOT_URLCONF = 'travelsite.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'travelsite.wsgi.application'
 #import os.path
-#PROJECT_DIR = os.path.dirname(__file__)
+PROJECT_DIR = os.path.dirname(__file__)
 TEMPLATE_DIRS = (
  # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    #os.path.join(PROJECT_DIR, "mytemplates"),
-    #os.path.join(PROJECT_DIR, "mytemplates/admin"),
-    #os.path.join(PROJECT_DIR, "mytemplates/destinations"),
+    os.path.join(PROJECT_DIR, "mytemplates"),
+    os.path.join(PROJECT_DIR, "mytemplates/admin"),
+    os.path.join(PROJECT_DIR, "mytemplates/destinations"),
     "/Users/marcelar/djangosites/travel-mit-site/travelsite/mytemplates",
     "/Users/marcelar/djangosites/travel-mit-site/travelsite/mytemplates/admin",
     "/Users/marcelar/djangosites/travel-mit-site/travelsite/mytemplates/destinations",
@@ -157,7 +157,7 @@ INSTALLED_APPS = (
 #    'south',
 )
 
-LOGIN_REDIRECT_URL = 'http://marcelar.scripts.mit.edu/travelmit/'
+LOGIN_REDIRECT_URL = 'http://agile-bastion-8951.herokuapp.com'
 AUTH_PROFILE_MODULE = 'profiles.Profile' #May have to change back
 ACCOUNT_ACTIVATION_DAYS = 7
 
@@ -202,7 +202,7 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 ALLOWED_HOSTS = ['*']
 
 # Static asset configuration
-import os
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 STATIC_URL = '/static/'
