@@ -36,11 +36,12 @@ Far Sighted Travel | World Map
 						.attr("width", w)
 						.attr("height", h);
 			{% load staticfiles %}
+
 			var countries = d3.json("{% static "json/world.json" %}", function(error, world) {
 
 				  	var countries = topojson.feature(world, world.objects.worldcountries).features,
       				neighbors = topojson.neighbors(world.objects.worldcountries.geometries);
-      				var places = topojson.feature(world, world.objects.places).features;
+      				
 
 				  svg.selectAll(".country")
 				      .data(countries)
@@ -53,12 +54,7 @@ Far Sighted Travel | World Map
 				      .datum(topojson.mesh(world, world.objects.worldcountries, function(a, b) { return a !== b; }))
 				      .attr("class", "boundary")
 				      .attr("d", path);
-				svg.append("path")
-				    .datum(topojson.feature(world, world.objects.places))
-				    .attr("d", path)
-				    .attr("class", "place")
-				    .attr("fill","blue");
-
+				
     /*
 				
 
