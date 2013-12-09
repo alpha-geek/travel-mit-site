@@ -5,15 +5,16 @@ Far Sighted Travel | Home
 {% block content %}
 <div class = "content">
 <article class = "top-content">
-	<header><h2>Welcome to Far Sights!</h2></header>
+	<header><h2>Welcome to Far Sighted Travel!</h2></header>
 	<content>
-	<p>Our goal is to provide a safe, reliable network for members of the MIT community to share their travel experiences. This site is a work in progress, but everyone that uses it helps us build it more!</p>
+	<p>Our goal is to provide a safe, reliable network for students to share their travel experiences.</p>
 	{% if user.is_authenticated %}
 	<h3><a href="/destinations/form_home/">Add information, pictures, or a review of your favorite destinations!</a></h3>
 	{% endif %}
 	{% if not user.is_authenticated %}
 	<p>Want to share your favorite destinations or stories with the MIT community, and discover even more places to go?
 	<h3><a href="/accounts/register">Register! It's easy!</a></h3></p>
+	<p>Or, <a href="/destinations/map">browse</a> and <a href="/destinations/form_home">post reviews</a> as an anonymous user!</p>
 	{% endif %}
 	</content>
 </article>
@@ -30,10 +31,10 @@ Far Sighted Travel | Home
 {% block top-sidebar %}
 <aside class="top-sidebar">
 	{% if not user.is_authenticated %}
-        <p><a href="../accounts/register">Sign Up</a></p>
+        <p><h3><a href="../accounts/register">Sign Up</a></h3></p>
         <p>
         {% block login_side %}
-        <a href="../accounts/login">Login</a></div><br />
+        <h3><a href="../accounts/login">Login</a></h3><br />
         {% endblock %}
         </p>
     {% endif %}
