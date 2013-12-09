@@ -202,7 +202,6 @@ EMAIL_HOST = environ.get('EMAIL_HOST', 'smtp.gmail.com')
 EMAIL_HOST_PASSWORD = environ.get('EMAIL_HOST_PASSWORD', '')
 EMAIL_HOST_USER = environ.get('EMAIL_HOST_USER', 'travelmit785@gmail.com')
 EMAIL_PORT = environ.get('EMAIL_PORT', 587)
-EMAIL_SUBJECT_PREFIX = '[%s] ' % SITE_NAME
 EMAIL_USE_TLS = True
 SERVER_EMAIL = EMAIL_HOST_USE
 # Parse database configuration from $DATABASE_URL for Heroku use
