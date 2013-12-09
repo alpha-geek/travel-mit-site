@@ -1,6 +1,7 @@
 {% extends "registration/login_side.html" %}
 {% load i18n %}
 {% block content %}
+<div class = "content">
 <div class = "top-content">
 {% if form.errors %}<p>Your username and password didn't match. Please try again
 .</p>{% endif %}
@@ -21,6 +22,7 @@
 <script type="text/javascript">
 document.getElementByID('id_username').focus()
 </script>
+</div>
 </div>
 {% endblock %}
 
