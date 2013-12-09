@@ -13,9 +13,39 @@
     .map div {
         padding:2px;
         margin:1px;
-        background-color:white;
-        color:black;
+        background: #fcfcfa;
     }
+    .overlay {
+  fill: none;
+  pointer-events: all;
+}
+}
+    .stroke {
+  fill: none;
+  stroke: #000;
+  stroke-width: 3px;
+}
+
+.fill {
+  fill: #fff;
+}
+
+.graticule {
+  fill: none;
+  stroke: #777;
+  stroke-width: .5px;
+  stroke-opacity: .5;
+}
+
+.land {
+  fill: #222;
+}
+
+.boundary {
+  fill: none;
+  stroke: #fff;
+  stroke-width: .5px;
+}
     a {
         text-decoration: none;
     }
