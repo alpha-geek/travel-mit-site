@@ -64,7 +64,7 @@ MEDIA_ROOT = '/media/'
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = 'http://marcelar.scripts.mit.edu/travelmit/media/' #Will change
+MEDIA_URL = '/media/' #Will change
 # Example: "/home/media/media.lawrence.com/static/"STATIC_ROOT = ''
 
 
@@ -158,7 +158,8 @@ INSTALLED_APPS = (
 #    'travelsite.forum',
     'travelsite.registration',
     'travelsite.profiles',
-    'storages'
+    'storages',
+    'boto'
 #    'askbot',
 #    'travelsite.haystack',
 #    'south',
@@ -197,13 +198,15 @@ LOGGING = {
         },
     }
 }
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = environ.get('EMAIL_HOST', 'smtp.gmail.com')
-EMAIL_HOST_PASSWORD = environ.get('EMAIL_HOST_PASSWORD', '')
-EMAIL_HOST_USER = environ.get('EMAIL_HOST_USER', 'travelmit785@gmail.com')
-EMAIL_PORT = environ.get('EMAIL_PORT', 587)
-EMAIL_USE_TLS = True
-SERVER_EMAIL = 'travelmit785@gmail.com'
+
+
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_HOST = environ.get('EMAIL_HOST', 'smtp.gmail.com')
+#EMAIL_HOST_PASSWORD = environ.get('EMAIL_HOST_PASSWORD', '')
+#EMAIL_HOST_USER = environ.get('EMAIL_HOST_USER', 'arilaen@gmail.com')
+#EMAIL_PORT = environ.get('EMAIL_PORT', 587)
+#EMAIL_USE_TLS = True
+#SERVER_EMAIL = 'travelmit785@gmail.com'
 # Parse database configuration from $DATABASE_URL for Heroku use
 import dj_database_url
 DATABASES['default'] =  dj_database_url.config()
@@ -221,5 +224,16 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
-    '/var/www/static/',
 )
+AWS_ACCESS_KEY_ID = 'AKIAI447NW4T5C6OMHDQ'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'travelsite'
+
+
+DEFAULT_FILE_STORAGE = 'travelsite.s3utils.MediaS3BotoStorage' 
+STATICFILES_STORAGE = 'travelsite.s3utils.StaticS3BotoStorage'
+S3_URL = 'http://%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+STATIC_DIRECTORY = '/static/'
+MEDIA_DIRECTORY = '/media/'
+STATIC_URL = S3_URL + STATIC_DIRECTORY
+MEDIA_URL = S3_URL + MEDIA_DIRECTORY
