@@ -65,16 +65,6 @@ class Review(models.Model):
     destination = models.ForeignKey(Destination)
     rating = models.IntegerField(null=True, blank=True)
 
-class Hotel(models.Model):
-    hotel_price = models.IntegerField(null=True, blank=True)
-    def __unicode__(self):
-        return self.name
-
-class Restaurant(models.Model):
-
-    def __unicode__(self):
-        return self.name
-
 class Dest_Form(ModelForm):
     class Meta:
         model = Destination

@@ -9,6 +9,7 @@
 {% if review_list %}
 {% for review in review_list %}
 <h3>{{ review.review_headline }}</h3>
+<h4>Rating: {{ review.rating }}/10</h4>
 <p>{{ review.review_content }}</p>
 {% endfor %}
 {% else %}
@@ -16,7 +17,7 @@ No reviews listed.
 {% endif %}
 {% endblock %}
 
-{% block gallery %}<h2>GALLERY</h2>{{ city.gallery }}{% endblock %}
+{% block gallery %}<h3>GALLERY</h3>{{ city.gallery }}{% endblock %}
 
 {% block popularplaces %}
 {# similar places block #}
@@ -25,7 +26,7 @@ No reviews listed.
 
 {% block interesttags %}
 <aside class = "top-sidebar"><content><header>
-<h2>INTEREST TAGS</h2></header>
+<h3>INTEREST TAGS</h3></header>
 {% if destination.interest_set.all %}
 {% for interest in destination_interest_set.all %}
 {{ interest.name }}

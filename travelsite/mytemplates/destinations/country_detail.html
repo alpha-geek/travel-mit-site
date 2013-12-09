@@ -30,7 +30,7 @@
 
 {% block interesttags %}
 <aside class="top-sidebar"><content><header>
-<h2>INTEREST TAGS</h2></header>
+<h3>INTEREST TAGS</h3></header>
 {% if country.interest_set.all %}
 {% for interest in country.interest_set.all %}
 {{ interest.name|upper }}
