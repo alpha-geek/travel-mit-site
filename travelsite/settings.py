@@ -9,15 +9,15 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'traveldb',
-        'USER': 'dev',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'NAME': 'traveldb',
+#        'USER': 'dev',
+#        'PASSWORD': '',
+#        'HOST': 'localhost',
+#        'PORT': '5432',
+#    }
     #'default': {
      #   'ENGINE': 'django.db.backends.mysql',
       #  'NAME': 'marcelar+travelmit',
@@ -26,7 +26,7 @@ DATABASES = {
         #'HOST': 'sql.mit.edu',
         #'PORT': '3306',                      # Set to empty string for default. Not used with sqlite3.
     #}
-}
+#}
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
