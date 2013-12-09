@@ -202,11 +202,11 @@ LOGGING = {
 
 
 #EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST_USER = os.environ.get('app18949432@heroku.com')
+EMAIL_HOST_USER = os.environ['app18949432@heroku.com']
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_PASSWORD = os.environ.get('csfyhi6z')
+EMAIL_HOST_PASSWORD = os.environ['csfyhi6z']
 #SERVER_EMAIL = 'travelmit785@gmail.com'
 # Parse database configuration from $DATABASE_URL for Heroku use
 import dj_database_url
