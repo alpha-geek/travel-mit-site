@@ -30,7 +30,7 @@ Far Sighted Travel | World Map
 						.append("svg")
 						.attr("width", w)
 						.attr("height", h);
-
+{% load staticfiles %}
 			d3.json("{% static "json/worldcountries.json" %}", function(json) {
         		svg.selectAll("path")
 		        .data(json.features)
