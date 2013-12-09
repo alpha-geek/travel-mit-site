@@ -9,17 +9,29 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
- #       'NAME': 'traveldb',
- #       'USER': 'dev',
-  #      'PASSWORD': '',
-   #     'HOST': 'localhost',
-  #      'PORT': '5432',
-   # }
-  #}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'traveldb',
+        'USER': 'dev',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+  }
+import psycopg2
+import urlparse
 
+urlparse.uses_netloc.append("postgres")
+url = urlparse.urlparse(os.environ["DATABASE_URL"])
+
+conn = psycopg2.connect(
+    database=url.path[1:],
+    user=url.username,
+    password=url.password,
+    host=url.hostname,
+    port=url.port
+)
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -185,9 +197,8 @@ LOGGING = {
 }
 
 # Parse database configuration from $DATABASE_URL for Heroku use
-#import dj_database_url
-#DATABASES['default'] =  dj_database_url.config()
-DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
+import dj_database_url
+DATABASES['default'] =  dj_database_url.config()
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
