@@ -1,5 +1,6 @@
 # Django settings for travelsite project.
 import os
+from os import environ
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
