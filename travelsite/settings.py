@@ -165,7 +165,7 @@ INSTALLED_APPS = (
 #    'south',
 )
 
-LOGIN_REDIRECT_URL = 'http://agile-bastion-8951.herokuapp.com'
+LOGIN_REDIRECT_URL = 'http://farsights.herokuapp.com'
 AUTH_PROFILE_MODULE = 'profiles.Profile' #May have to change back
 ACCOUNT_ACTIVATION_DAYS = 7
 

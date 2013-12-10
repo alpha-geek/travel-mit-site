@@ -1,5 +1,6 @@
 {% extends "destinations/base_generic.html" %}
 {% block content %}
+<div class = "content"><div class = "top-content">
 <h1>Profile</h1>
 <h2>Username: {{ profile.user }}</h2>
 {% if profile.avatar %}
@@ -19,4 +20,5 @@ Name: {% if profile.first_name %}{{ profile.first_name }}{% endif %}{% if profil
 </p>
 <h4><a href="/profile/edit"><div class="content-link">Edit Profile</div></a></h4>
 <h4><a href="/destinations/form_home"><div class="content-link">Add or Review a Place</div></a></h4>
+</div></div>
 {% endblock %}

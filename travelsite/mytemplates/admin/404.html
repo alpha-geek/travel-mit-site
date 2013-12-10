@@ -1,12 +1,12 @@
-{% extends "admin/base_site.html" %}
+{% extends "destinations/base_generic.html" %}
 {% load i18n %}
 
 {% block title %}{% trans 'Page not found' %}{% endblock %}
 
 {% block content %}
+<div class="content"><div class = "top-content">
+<header><h2>{% trans 'Page not found' %}</h2></header>
 
-<h2>{% trans 'Page not found' %}</h2>
-
-<p>{% trans "We're sorry, but the requested page could not be found." %}</p>
+<p>{% trans "We're sorry, but the requested page could not be found." %}</p></div></div>
 
 {% endblock %}

@@ -2,6 +2,7 @@
 {% block title %}Create Profile{% endblock %}
  
 {% block content %}
+<div class = "content"><div class = "top-content">
 <h1>Create Your Profile</h1>
 
 <form method="POST" action="{{ app.path }}">{% csrf_token %}
@@ -14,6 +15,6 @@
 <input type="submit" value="Update" id="submit" class="submit" name="submit" />
 
 </form>
- 
+ </div></div>
 {% endblock content %}
 
