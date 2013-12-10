@@ -6,8 +6,8 @@
 <h1>Edit {{ user }}'s Profile</h1>
 
 <form method="POST" action="{{ app.path }}">{% csrf_token %}
-        {% for field in form %}  {# Get rid of posts #}
-            {{ field.label_tag }}: {{ field }}
+        {% for field in form %}  {% if not field.label_tag.equals("Posts") %}
+            {{ field.label_tag }}: {{ field }}{% endif %}
 <br />
 <br />
         {% endfor %}

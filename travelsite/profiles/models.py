@@ -1,11 +1,15 @@
+"""(User) Profile model"""
+
 from django.db import models
 from django.contrib.auth.models import User
-#from string import join
-from travelsite.settings import MEDIA_ROOT
+
+import boto
+
 #from travelsite.destinations.models import *
 
 class Profile(models.Model):
-    avatar = models.ImageField("Profile Pic", upload_to=MEDIA_ROOT, blank=True, null=True) 
+    avatar = models.ImageField("Profile Pic", upload_to='avatars/', blank=True, null=True) 
+    #Need to delete this
     posts = models.IntegerField(default=0, blank=True, null=True)
     user = models.ForeignKey(User, unique=True)
     first_name = models.CharField(max_length=30, null=True, blank=True, default="")
