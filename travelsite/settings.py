@@ -64,7 +64,7 @@ MEDIA_ROOT = '/media/'
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = '/media/' #Will change
+
 # Example: "/home/media/media.lawrence.com/static/"STATIC_ROOT = ''
 
 
@@ -145,7 +145,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
-    'django.contrib.staticfiles',
+    #'django.contrib.staticfiles',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
