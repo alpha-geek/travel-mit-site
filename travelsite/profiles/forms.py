@@ -4,5 +4,5 @@ from travelsite.profiles.models import *
  
 class ProfileForm(ModelForm):
   class Meta:
-      model = UserProfile
+      model = Profile
       exclude = ('id','posts',)

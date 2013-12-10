@@ -10,6 +10,8 @@ from django.conf import settings
 from django.db.models import get_model
 
 from django.contrib.auth.models import SiteProfileNotAvailable
+from django.core.files import File
+from django.core.files.temp import NamedTemporaryFile
 
 
 def get_profile_model():
@@ -44,3 +46,14 @@ def get_profile_form():
             model = profile_mod
             exclude = ('user','posts') # User will be filled in by the view.
     return _ProfileForm
+
+#def download_photo(url):
+ #   """
+  #  """
+   # r = requests.get(url)
+
+    #img_temp = NamedTemporaryFile(delete=True)
+    #img_temp.write(r.content)
+    #img_temp.flush()
+    #img_temp.seek(0)
+    #return File(img_temp)

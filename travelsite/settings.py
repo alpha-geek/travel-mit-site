@@ -1,7 +1,7 @@
 # Django settings for travelsite project.
 import os
 from os import environ
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -201,6 +201,8 @@ LOGGING = {
 
 
 
+
+
 #EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST_USER = os.environ['SENDGRID_USERNAME']
 EMAIL_HOST = 'smtp.sendgrid.net'
@@ -239,3 +241,6 @@ MEDIA_DIRECTORY = '/media/'
 STATIC_URL = S3_URL + STATIC_DIRECTORY
 MEDIA_URL = S3_URL + MEDIA_DIRECTORY
 AWS_QUERYSTRING_AUTH = False
+
+bucket = conn.get_bucket(AWS_STORAGE_BUCKET_NAME)
+k = Key(bucket)
