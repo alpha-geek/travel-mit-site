@@ -106,8 +106,7 @@ def profile_detail(request, username, public_profile_field=None,
     except ObjectDoesNotExist:
     #    raise Http404
         return HttpResponseRedirect(reverse("travelsite.profiles.views.create_profile", args=(user,))
-    if public_profile_field is not None and \
-       not getattr(profile_obj, public_profile_field):
+    if public_profile_field is not None and not getattr(profile_obj, public_profile_field):
         profile_obj = None
     
     if extra_context is None:
