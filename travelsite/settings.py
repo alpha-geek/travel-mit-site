@@ -207,7 +207,7 @@ EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_PASSWORD = os.environ['SENDGRID_PASSWORD']
-#SERVER_EMAIL = 'travelmit785@gmail.com'
+SERVER_EMAIL = 'travelmit785@gmail.com'
 # Parse database configuration from $DATABASE_URL for Heroku use
 import dj_database_url
 DATABASES['default'] =  dj_database_url.config()
@@ -227,10 +227,9 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 #Should encode the following
-AWS_ACCESS_KEY_ID = 'AKIAI447NW4T5C6OMHDQ'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'travelsite'
-
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('S3_BUCKET_NAME')
 
 DEFAULT_FILE_STORAGE = 'travelsite.s3utils.MediaS3BotoStorage' 
 STATICFILES_STORAGE = 'travelsite.s3utils.StaticS3BotoStorage'

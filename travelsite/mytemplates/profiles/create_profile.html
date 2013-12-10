@@ -7,7 +7,7 @@
 
 <form method="POST" action="{{ app.path }}">{% csrf_token %}
 <h2>{{ user }}</h2>
-        {% for field in form %} {% if field.label_tag != "Posts" %}
+        {% for field in form %} {% if str(field.label_tag) != "Posts" %}
             {{ field.label_tag }}: {{ field }}{% endif %}
 <br />
 <br />
