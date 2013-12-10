@@ -24,7 +24,7 @@ def create_profile(request, form_class=None, success_url=None,
 
     try:
         profile_obj = request.user.get_profile()
-        return HttpResponseRedirect(reverse('profiles_edit_profile'))
+        return HttpResponseRedirect(reverse('profiles_edit_profile'), args = (request,))
     except ObjectDoesNotExist:
         pass
     
@@ -105,7 +105,7 @@ def profile_detail(request, username, public_profile_field=None,
         profile_obj = user.get_profile()
     except ObjectDoesNotExist:
     #    raise Http404
-        return HttpResponseRedirect(reverse("travelsite.profiles.views.create_profile", args=user))
+        return HttpResponseRedirect(reverse("travelsite.profiles.views.create_profile", args=(user,))
     if public_profile_field is not None and \
        not getattr(profile_obj, public_profile_field):
         profile_obj = None

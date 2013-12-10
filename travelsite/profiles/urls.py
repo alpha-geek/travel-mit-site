@@ -24,20 +24,19 @@ redirect. If you don't use that name, remember to explicitly pass
 
 from django.conf.urls import patterns, url
 
-from travelsite.profiles import views
-
+from travelsite.profiles.models import *
 
 urlpatterns = patterns('',
                        url(r'^create/$',
-                           views.create_profile,
+                           'travelsite.profiles.views.create_profile',
                            name='profiles_create_profile'),
                        url(r'^edit/$',
-                           views.edit_profile,
+                           'travelsite.profiles.views.edit_profile',
                            name='profiles_edit_profile'),
                        url(r'^(?P<username>\w+)/$',
-                           views.profile_detail,
+                           'travelsite.profiles.views.profile_detail',
                            name='profiles_profile_detail'),
                        url(r'^$',
-                           views.profile_list,
+                           'travelsite.profiles.views.profile_list',
                            name='profiles_profile_list'),
                        )
