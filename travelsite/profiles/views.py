@@ -18,6 +18,8 @@ from django.contrib.auth.models import User
 from travelsite.profiles import utils
 from travelsite.profiles.models import Profile
 
+from django.core.files.storage import default_storage
+
 def create_profile(request, form_class=None, success_url=None,
                    template_name='profiles/create_profile.html',
                    extra_context=None):

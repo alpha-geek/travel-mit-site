@@ -4,11 +4,12 @@ from django.db import models
 from django.contrib.auth.models import User
 
 import boto
+from django.core.files.storage import default_storage
 
 #from travelsite.destinations.models import *
 
 class Profile(models.Model):
-    avatar = models.ImageField("Profile Pic", upload_to='avatars', blank=True, null=True) 
+    avatar = models.ImageField(upload_to='avatars', blank=True, null=True) 
     #Need to delete this
     posts = models.IntegerField(default=0, blank=True, null=True)
     user = models.ForeignKey(User, unique=True)
