@@ -3,7 +3,8 @@
 {% block title %}{{ destination.name }}{% endblock %}
 
 {% block main_content %}
-<article class = "top-content"><content><header><h1>{{ name }}, , <a href="/destinations/cities/{{ city.id }}">{{ city.city_name }}</a>, <a href="/destinations/countries/{{ city.country.id}}">{{ city.country.country_name }}</a></h1>
+<article class = "top-content"><content><header><h1>{{ name }}</h1>
+	<h2><a href="/destinations/cities/{{ city.id }}">{{ city.city_name }}</a>, <a href="/destinations/countries/{{ city.country.id}}">{{ city.country.country_name }}</a></h2>
 <h2>Reviews</h2></header>
 <ul>
 {% if review_list %}
