@@ -2,8 +2,8 @@ Your activation key: {{ activation_key }}
 
 Please use this link to activate your account:
 
-agile-bastion-8951.herokuapp.com/accounts/activate/{{ activation_key }}/
+farsights.herokuapp.com/accounts/activate/{{ activation_key }}/
 
 After activation you can login to the site:
 
-agile-bastion-8951.herokuapp.com/accounts/login/
+farsights.herokuapp.com/accounts/login/

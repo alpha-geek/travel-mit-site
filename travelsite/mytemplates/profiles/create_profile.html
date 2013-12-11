@@ -5,7 +5,7 @@
 <div class = "content"><div class = "top-content">
 <h1>Create Your Profile</h1>
 
-<form method="POST" action="{{ app.path }}">{% csrf_token %}
+<form enctype="multipart/form-data" method="POST" action="{{ app.path }}">{% csrf_token %}
 <h2>{{ user }}</h2>
         {% for field in form %}
             {{ field.label_tag }}: {{ field }}
