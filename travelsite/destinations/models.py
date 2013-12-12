@@ -1,97 +1,105 @@
+"""
+
+This file contains the models relating to the destination class,
+including city, country, destination, interest, and forms.
+
+"""
+
 from django.db import models
-from django import forms
 from django.forms import ModelForm
 
-
 class Interest(models.Model):
-    interest_name = models.CharField(max_length=20) 
-
+    """Interest model, which will have a ManyToMany relation
+    with Destinations"""
+    interest_name = models.CharField(max_length=20)
     class Meta:
+        """Meta class for lists and forms"""
         ordering = ('interest_name',)
 
     def __unicode__(self):
         return self.interest_name
 
 class Rating(models.Model):
+    """Rating model, there is already a ratings attribute for reviews
+    so this may be removed"""
     rating_value = models.IntegerField(null=True, blank=True)
-
     class Meta:
+        """Meta class for lists and forms"""
         abstract = True
         ordering = ['-rating_value']
 
 class Country(models.Model):
-    country_name = models.CharField(max_length=20)    
-
+    """Country model"""
+    country_name = models.CharField(max_length=20)
     class Meta:
+        """Meta class for lists and forms"""
         ordering = ('country_name',)
 
     def __unicode__(self):
         return self.country_name
 
     def cities(self):
+        """Return list of cities in country"""
         return self.city_set.all().order_by('-id')
 
 class City(models.Model):
+    """City model, many to one relation to country and one to many relation
+    to destination, may have to change to many to many with destination"""
     city_name = models.CharField(max_length=20)
     country = models.ForeignKey(Country)
-#    basic_info = models.TextField(null=True, blank=True)
 
     def __unicode__(self):
         return self.city_name
-
     class Meta:
+        """Meta class for lists and forms"""
         ordering = ('city_name',)
 
     def parent_country(self):
+        """Returns parent country"""
         return self.country
 
 class Destination(models.Model):
+    """Destination model, with a parent city, ManyToMany interest setup,
+    and one to many review setup"""
     name = models.CharField(max_length=50)
-#   consider adding gpscoord to integrate with google maps?
     city = models.ForeignKey(City)
     interest = models.ManyToManyField(Interest, null=True, blank=True)
-#    basic_info = models.TextField(null=True, blank=True)
-#    pub_date = models.DateTimeField('date published')
     class Meta:
+        """Meta class for lists and forms"""
         ordering = ('name',)
 
     def __unicode__(self):
         return self.name
 
 class Review(models.Model):
+    """Review model, may rename headline in form and/or model"""
     review_headline = models.CharField(max_length=50)
     review_content = models.TextField()
     destination = models.ForeignKey(Destination)
     rating = models.IntegerField(null=True, blank=True)
 
-class Dest_Form(ModelForm):
+class DestForm(ModelForm):
+    """Destination form, inherits from ModelForm"""
     class Meta:
+        """Meta class for forms"""
         model = Destination
-#    def save(self):
- #       if self.is_valid():
-  #          from travelsite.destinations.models import Destination
-   #         new_destination = Destination(**self.cleaned_data)
-    #        new_destination.save()
-     #       return new_friend
 
-class City_Form(ModelForm):
-
+class CityForm(ModelForm):
+    """City form, inherits from ModelForm"""
     class Meta:
+        """Meta class for forms"""
         model = City
         fields = ('city_name','country')
 
-#    def save(self, commit=True):
-#        city = super(City, self).save(commit=False)
-#        city.inuse = True
-#        if commit:
-#            city.save()
-
-class Country_Form(ModelForm):
+class CountryForm(ModelForm):
+    """Country form, inherits from ModelForm"""
     class Meta:
+        """Meta class for forms"""
         model = Country
     country_name = models.CharField(max_length=20)
 
-
-class Review_Form(ModelForm):
+class ReviewForm(ModelForm):
+    """Review form, inherits from ModelForm"""
     class Meta:
+        """Meta class for forms"""
         model = Review

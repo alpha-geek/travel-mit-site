@@ -1,3 +1,9 @@
+"""
+
+Destination urls.
+
+"""
+
 from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView, ListView, DetailView
 from travelsite.destinations.models import *

@@ -1,3 +1,9 @@
+"""
+
+This file registers the destination classes into the admin site.
+
+"""
+
 from travelsite.destinations.models import *
 from django.contrib import admin
 

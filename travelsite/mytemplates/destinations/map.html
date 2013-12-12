@@ -41,15 +41,9 @@ Far Sighted Travel | World Map
 			    .defer(d3.tsv, "{% static "data/world-country-names.tsv" %}")
 			    .await(ready);
 
-			function ready(error, world, names) {
-				  	var countries = topojson.object(world, world.objects.worldcountries).geometries,
-      					neighbors = topojson.neighbors(world, countries),
-      					i = -1,
-      					n = countries.length;
-      				
-					 countries.forEach(function(d) { 
-					    d.name = names.filter(function(n) { return d.id == n.id; })[0].name; 
-					  });
+			function ready(error, world) {
+				  	var countries = topojson.feature(world, world.objects.worldcountries).features,
+      					neighbors = topojson.neighbors(world.objects.worldcountries.geometries);
 
 				  var country = svg.selectAll(".country")
 				      .data(countries)
@@ -69,7 +63,7 @@ Far Sighted Travel | World Map
 				      	tooltip
 				      		.classed("hidden", false)
 				      		.attr("style", "left:"+(mouse[0]+25)+"px;top:"+mouse[1]+"px")
-				      		.html(d.name)
+				      		.html(d.properties.name)
 
 				      })
 				      .on("mouseout",  function(d,i) {
