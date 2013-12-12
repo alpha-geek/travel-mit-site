@@ -20,5 +20,6 @@ class Profile(models.Model):
 #    favorite_destinations = models.ManyToManyField(queryset=Destination.objects.all(), null=True, blank=True)
     bio = models.TextField(null=True, blank=True, default="")
 
+
     def __unicode__(self):
         return self.user

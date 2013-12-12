@@ -12,7 +12,7 @@ Far Sighted Travel | World Map
 	<div class = "map"></div>
 	<script type="text/javascript">
 
-			//Width and height
+			//Width and height of SVG container for map
 			var w = 800;
 			var h = 500;
 			var color = d3.scale.category20();
@@ -21,7 +21,7 @@ Far Sighted Travel | World Map
 								   .translate([w/2, h/2])
 								   .scale([150])
 
-			var graticule = d3.geo.graticule();
+			//var graticule = d3.geo.graticule();
 
 			//Define path generator
 			var path = d3.geo.path()

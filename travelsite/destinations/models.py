@@ -47,7 +47,6 @@ class City(models.Model):
 
 class Destination(models.Model):
     name = models.CharField(max_length=50)
-
 #   consider adding gpscoord to integrate with google maps?
     city = models.ForeignKey(City)
     interest = models.ManyToManyField(Interest, null=True, blank=True)

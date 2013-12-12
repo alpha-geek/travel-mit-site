@@ -9,7 +9,7 @@ from django.core.context_processors import csrf
 #from django.views.decorators.csrf import csrf_protect
 import json
 
-#def location_dest_view(request):
+#def map_view(request):
 #    json_data = open('/static/json/worldcountries.json')   
 #    worldata1 = json.load(json_data)
 #    worlddata2 = json.dumps(json_data)
@@ -22,7 +22,7 @@ import json
     
 
 def handle_uploaded_file(f):
-    fileplace = open('some/file/name.txt','wb+')
+    fileplace = open({{ MEDIA_URL }},'wb+')
     for chunk in f.chunks():
         fileplace.write(chunk)
     fileplace.close()
