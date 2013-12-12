@@ -42,10 +42,10 @@ Far Sighted Travel | World Map
 			    .await(ready);
 
 			function ready(error, world, names) {
-				  	var countries = topojson.feature(world, world.objects.worldcountries).features,
-      				neighbors = topojson.neighbors(world.objects.worldcountries.geometries),
-      				 i = -1,
-      				n = countries.length;
+				  	var countries = topojson.object(world, world.objects.worldcountries).geometries,
+      					neighbors = topojson.neighbors(world, countries),
+      					i = -1,
+      					n = countries.length;
       				
 					 countries.forEach(function(d) { 
 					    d.name = names.filter(function(n) { return d.id == n.id; })[0].name; 
