@@ -1,9 +1,8 @@
 # Django settings for travelsite project.
 import os
 from os import environ
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-from s3utils import *
 
 ADMINS = (
     ('marcelar', 'marcelar@mit.edu','travelmit785@gmail.com'),
