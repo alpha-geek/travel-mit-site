@@ -62,7 +62,7 @@ Far Sighted Travel | World Map
 				      	var mouse = d3.mouse(svg.node()).map( function(d) {return parseInt(d)});
 				      	tooltip
 				      		.classed("hidden", false)
-				      		.attr("transform:", "translate("+ path.centroid(d) + ")")
+				      		.attr("transform", "translate(" + path.centroid(d) + ")")
 				      		.html(d.properties.name);
 				      })
 				      .on("mouseout",  function(d,i) {
