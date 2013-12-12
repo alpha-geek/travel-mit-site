@@ -147,7 +147,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     #'django.contrib.staticfiles',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    #'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -204,15 +204,15 @@ LOGGING = {
 
 
 #EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST_USER = os.environ['SENDGRID_USERNAME']
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_PASSWORD = os.environ['SENDGRID_PASSWORD']
+#EMAIL_HOST_USER = os.environ['SENDGRID_USERNAME']
+#EMAIL_HOST = 'smtp.sendgrid.net'
+#EMAIL_PORT = 587
+#EMAIL_USE_TLS = True
+#EMAIL_HOST_PASSWORD = os.environ['SENDGRID_PASSWORD']
 #SERVER_EMAIL = 'travelmit785@gmail.com'
 # Parse database configuration from $DATABASE_URL for Heroku use
-import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
+#import dj_database_url
+#DATABASES['default'] =  dj_database_url.config()
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
