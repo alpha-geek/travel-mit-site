@@ -9,7 +9,7 @@ Far Sighted Travel | World Map
 <article class = "top-content">
 <content>
 	<header><h2>World Map</h2></header>
-	<div class = "map"></div>
+	<div id = "map"></div>
 	<script type="text/javascript">
 
 			//Width and height of SVG container for map
@@ -24,15 +24,17 @@ Far Sighted Travel | World Map
 			var path = d3.geo.path()
 							 .projection(projection)
 							 .pointRadius(1.1);
-							 
-			var tooltip = d3.select("div.map").append("div")
-    			.attr("class", "tooltip");
+							
 
 			//Create SVG element
-			var svg = d3.select("div.map")
+			var svg = d3.select("#map")
 						.append("svg")
 						.attr("width", w)
 						.attr("height", h);
+
+
+			var tooltip = d3.select("#map").append("div")
+    			.attr("class", "tooltip");
 			{% load staticfiles %}
 			queue()
 			    .defer(d3.json, "{% static "json/world.json" %}")
