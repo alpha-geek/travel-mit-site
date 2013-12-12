@@ -5,8 +5,9 @@ Far Sighted Travels | Home
 {% block content %}
 <div class = "content">
 <article class = "top-content">
+    <content>
 	<header><h2>Welcome to Far Sighted Travels!</h2></header>
-	<content>
+	
 	<p>Our goal is to provide a safe, reliable network for students to share their travel experiences.</p>
 	{% if user.is_authenticated %}
 	<h3><a href="/destinations/form_home/">Add information, pictures, or a review of your favorite destinations!</a></h3>

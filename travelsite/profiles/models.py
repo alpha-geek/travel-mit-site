@@ -1,7 +1,6 @@
 """
 
-(User) Profile model, with a one to one relation with a user,
-first name, last name, avatar, hometown, bio, and posts.
+(User) Profile model.
 
 """
 
@@ -14,6 +13,13 @@ from django.core.files.storage import default_storage
 #from travelsite.destinations.models import *
 
 class Profile(models.Model):
+    """
+
+    Profile model with a one to one relation with a user,
+    first name, last name, avatar, hometown, bio, and posts.
+
+    """
+    
     avatar = models.ImageField(upload_to='avatars',storage='s3boto', blank=True, null=True) 
     posts = models.IntegerField(default=0, blank=True, null=True)
     user = models.ForeignKey(User, unique=True)
