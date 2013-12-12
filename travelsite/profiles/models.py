@@ -1,4 +1,9 @@
-"""(User) Profile model"""
+"""
+
+(User) Profile model, with a one to one relation with a user,
+first name, last name, avatar, hometown, bio, and posts.
+
+"""
 
 from django.db import models
 from django.contrib.auth.models import User
