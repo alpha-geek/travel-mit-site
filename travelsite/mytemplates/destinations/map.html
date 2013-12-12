@@ -47,7 +47,7 @@ Far Sighted Travel | World Map
 
 				  var country = svg.selectAll(".country")
 				      .data(countries)
-				    .enter().insert("path", ".graticule")
+				    .enter().insert("path")
 				      .attr("class", "country")
 				      .attr("d", path)
 				      .style("fill", function(d, i) { return color(d.color = d3.max(neighbors[i], function(n) { return countries[n].color; }) + 1 | 0); });
@@ -62,7 +62,7 @@ Far Sighted Travel | World Map
 				      	var mouse = d3.mouse(svg.node()).map( function(d) {return parseInt(d)});
 				      	tooltip
 				      		.classed("hidden", false)
-				      		.attr("style", "left:"+(mouse[0]+25)+"px;top:"+mouse[1]+"px")
+				      		.attr("transform:" function(d) {return "translate("+ + path.centroid(d) + ")"})
 				      		.html(d.properties.name)
 
 				      })
