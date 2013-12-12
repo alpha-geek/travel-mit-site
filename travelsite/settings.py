@@ -166,7 +166,7 @@ INSTALLED_APPS = (
 )
 
 LOGIN_REDIRECT_URL = 'http://farsights.herokuapp.com'
-AUTH_PROFILE_MODULE = 'profiles.Profile' #May have to change back
+AUTH_PROFILE_MODULE = 'profiles.Profile'
 ACCOUNT_ACTIVATION_DAYS = 7
 
 
@@ -228,7 +228,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-#Should encode the following
+
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('S3_BUCKET_NAME')

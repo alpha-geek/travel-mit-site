@@ -36,14 +36,22 @@ Far Sighted Travel | World Map
 						.attr("width", w)
 						.attr("height", h);
 			{% load staticfiles %}
+			queue()
+			    .defer(d3.json, "{% static "json/world.json" %}")
+			    .defer(d3.tsv, "{% static "data/world-country-names.tsv" %}")
+			    .await(ready);
 
-			var countries = d3.json("{% static "json/world.json" %}", function(error, world) {
-
+			function ready(error, world) {
 				  	var countries = topojson.feature(world, world.objects.worldcountries).features,
-      				neighbors = topojson.neighbors(world.objects.worldcountries.geometries);
+      				neighbors = topojson.neighbors(world.objects.worldcountries.geometries),
+      				 i = -1,
+      				n = countries.length;
       				
+					 countries.forEach(function(d) { 
+					    d.name = names.filter(function(n) { return d.id == n.id; })[0].name; 
+					  });
 
-				  svg.selectAll(".country")
+				  var country = svg.selectAll(".country")
 				      .data(countries)
 				    .enter().insert("path", ".graticule")
 				      .attr("class", "country")
@@ -54,7 +62,21 @@ Far Sighted Travel | World Map
 				      .datum(topojson.mesh(world, world.objects.worldcountries, function(a, b) { return a !== b; }))
 				      .attr("class", "boundary")
 				      .attr("d", path);
-				
+
+				  country
+				      .on("mousemove", function(d,i) {
+				      	var mouse = d3.mouse(svg.node()).map( function(d) {return parseInt(d)});
+				      	tooltip
+				      		.classed("hidden", false)
+				      		.attr("style", "left:"+(mouse[0]+25)+"px;top:"+mouse[1]+"px")
+				      		.html(d.name)
+
+				      });
+				      .on("mouseout",  function(d,i) {
+        					tooltip.classed("hidden", true)
+      					});
+				};
+
     /*
 				
 
@@ -113,7 +135,7 @@ d3.json("uk.json", function(error, uk) {
 				 	.attr("r",1)
 				 	.style("fill","blue");
 */
-				});
+				
 
 				d3.select(self.frameElement).style("height", h + "px");
 				

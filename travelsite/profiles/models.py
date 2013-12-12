@@ -9,8 +9,7 @@ from django.core.files.storage import default_storage
 #from travelsite.destinations.models import *
 
 class Profile(models.Model):
-    avatar = models.ImageField(upload_to='avatars', blank=True, null=True) 
-    #Need to delete this
+    avatar = models.ImageField(upload_to='avatars',storage='s3boto', blank=True, null=True) 
     posts = models.IntegerField(default=0, blank=True, null=True)
     user = models.ForeignKey(User, unique=True)
     first_name = models.CharField(max_length=30, null=True, blank=True, default="")
