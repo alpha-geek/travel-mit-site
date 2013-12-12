@@ -20,16 +20,14 @@ Far Sighted Travel | World Map
 			var projection = d3.geo.equirectangular()
 								   .translate([w/2, h/2])
 								   .scale([150])
-
-			//var graticule = d3.geo.graticule();
-
 			//Define path generator
 			var path = d3.geo.path()
 							 .projection(projection)
 							 .pointRadius(1.1);
 							 
-			
-			//var graticule = d3.geo.graticule();
+			var tooltip = d3.select("div.map").append("div")
+    			.attr("class", "tooltip");
+
 			//Create SVG element
 			var svg = d3.select("div.map")
 						.append("svg")
