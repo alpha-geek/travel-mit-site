@@ -41,7 +41,7 @@ Far Sighted Travel | World Map
 			    .defer(d3.tsv, "{% static "data/world-country-names.tsv" %}")
 			    .await(ready);
 
-			function ready(error, world) {
+			function ready(error, world, names) {
 				  	var countries = topojson.feature(world, world.objects.worldcountries).features,
       				neighbors = topojson.neighbors(world.objects.worldcountries.geometries),
       				 i = -1,
