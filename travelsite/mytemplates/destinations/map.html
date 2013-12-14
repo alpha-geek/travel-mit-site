@@ -13,7 +13,7 @@ Far Sighted Travel | World Map
 	<script type="text/javascript">
 
 			//Width and height of SVG container for map
-			var w = 800;
+			var w = 960;
 			var h = 500;
 			var color = d3.scale.category20();
 			//Define map projection
@@ -41,6 +41,16 @@ Far Sighted Travel | World Map
 			    .defer(d3.tsv, "{% static "data/world-country-names.tsv" %}")
 			    .await(ready);
 
+			var chart = $("#chart"),
+aspect = chart.width() / chart.height(),
+container = chart.parent();
+
+$(window).on("resize", function() {
+var targetWidth = container.width();
+chart.attr("width", targetWidth);
+chart.attr("height", Math.round(targetWidth / aspect));
+}).trigger("resize");
+
 			function ready(error, world) {
 				  	var countries = topojson.feature(world, world.objects.worldcountries).features,
       					neighbors = topojson.neighbors(world.objects.worldcountries.geometries);
@@ -66,8 +76,15 @@ Far Sighted Travel | World Map
 				      		.html(d.properties.name);
 				      })
 				      .on("mouseout",  function(d,i) {
-        					tooltip.classed("hidden", true)
+        					tooltip.classed("hidden", true);
       				  });
+      			$(window).on("resize", function() {
+						var targetWidth = container.width();
+						svg.attr("width", targetWidth);
+						svg.attr("height", Math.round(targetWidth / aspect));
+					}).trigger("resize");
+;
+
 				};
 				
 

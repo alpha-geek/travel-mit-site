@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{% static "css/styles_new.css" %}" type="text/css" media="all" />
     {# <script type="text/javascript" src="{% static "scripts/backbone/backbone-min.js" %}"></script> #}
     <script type="text/javascript" src="{% static "scripts/d3/d3.v3.min.js" %}"></script>
-    <script type="text/javascript" src="{% static "scripts/d3/d3.geoprojection.v0.min.js" %}"></script>
+    {# <script type="text/javascript" src="{% static "scripts/d3/d3.geoprojection.v0.min.js" %}"></script> #}
     <script type="text/javascript" src="{% static "scripts/d3/topojson.v1.min.js" %}"></script>
     <script type="text/javascript" src="{% static "scripts/d3/queue.v1.min.js" %}"></script>
 
@@ -19,7 +19,7 @@
 <body class="body">
     <header class = "mainHeader">
         <div class ="headerBar"></div>
-        <div class="logo"><a href="/"><img src="{% static "images/farsightslogoblue.png" %}" /></a></div>
+        <div class="logo"><a href="/"><img src="{% static "images/farsightslogoblue.png" %}" alt="Far Sighted Travels Logo" /></a></div>
         <div class = "blockHeader"></div>
         {% block navigation %}
         <nav><ul>
