@@ -142,7 +142,7 @@ def city_form_edit_view(request):
 
 def index(request):
     """Index of destinations."""
-    latest_destination_list = Destination.objects.all().order_by('-id')[:5]
+    latest_destination_list = Destination.objects.all().order_by('-id')[:3]
     t = loader.get_template('destinations/index.html')
     c = RequestContext(request, {
         'latest_destination_list': latest_destination_list,

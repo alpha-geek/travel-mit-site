@@ -29,9 +29,6 @@
         <li><a href="/about">About</a></li>
         <li>{% if user.is_authenticated %}<a href="/profile/{{ user }}">{% else %}<a href="/accounts/register/">{% endif %}Profile</a></li>
         {# <li class = "rightHeader"><a href="../search">Search</a></li>#}
-        </ul></nav>
-        {% endblock %}
-            <nav class = "loginMenu"><ul>
         {% if not user.is_authenticated %}
         <li><a href="../accounts/register">Sign Up</a></li>
         {% block login_side %}
@@ -41,7 +38,8 @@
         {% if user.is_authenticated %}
         <li><a href="../accounts/logout">Logout</a></li>
         {% endif %}
-    </ul></nav>
+        </ul></nav>
+        {% endblock %}
     </header>
 <div class="mainContent">
     
