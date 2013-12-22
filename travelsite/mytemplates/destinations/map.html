@@ -74,7 +74,7 @@ Far Sighted Travel | World Map
 				  country
 				      .on("mousemove", function(d,i) {
 				      	d3.select(this)
-					      		.style("stroke","#6666FF").style("stroke-width","7px");
+					      		.style("stroke","#6666FF").style("stroke-width","3px");
 				      	var mouse = d3.mouse(svg.node()).map( function(d) {return parseInt(d)});
 				      	tooltip
 				      		.classed("hidden", false)
@@ -82,7 +82,7 @@ Far Sighted Travel | World Map
 				      		.html(d.properties.name);
 				      })
 				      .on("mouseout",  function(d,i) {
-				      	d3.select(this).style("stroke","#000").style("stroke-width","3px");
+				      	d3.select(this).style("stroke","#fff").style("stroke-width",".5px");
         					tooltip.classed("hidden", true);
       				  });
 
