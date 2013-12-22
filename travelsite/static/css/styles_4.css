@@ -57,24 +57,26 @@
     }
     #countrycontainer {
         width:100%;
-        height:20px;
+        height:60px;
         background: #fcfcfa;
-        align-content:center;
+       padding: 0 0 20px 0;
+       align-content:center;
+       display:table-cell;
+       text-align:center;
+       vertical-align:middle;
     }
     #map {
-      border:2px solid #000;
+      border:0px;
       width:100%;
       height:500px;
         background: #fcfcfa;
     }
     .tooltip {
-      color: #222; 
-      background: #fff;
+      color: #222;
       text-shadow: #f5f5f5 0 1px 0;
       border:0px;
       font-size:180%;
-      display: block;
-      margin: auto;
+      display:inline-block;
       
     }
     div.logo {
@@ -92,6 +94,17 @@
         padding:0 0 0 0;
         height:30px;
         background-color: #003366;
+        """#0099cc#3399FF;"""
+    }
+    .mainHeader .loginMenu nav
+    {
+        float:right;
+        position:fixed;
+        margin:0 0 0 0;
+        width:100%;
+        padding:30px 0 0 0;
+        height:30px;
+        background-color: #0099cc;
         """#0099cc#3399FF;"""
     }
     .mainHeader nav ul {
@@ -151,9 +164,6 @@
 
     }
 
-    path:hover {
-  fill: red;
-}
     .content-full {
         overflow:hidden;
         width:98%;

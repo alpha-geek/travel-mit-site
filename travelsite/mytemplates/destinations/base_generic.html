@@ -31,7 +31,17 @@
         {# <li class = "rightHeader"><a href="../search">Search</a></li>#}
         </ul></nav>
         {% endblock %}
-
+            <nav class = "loginMenu"><ul>
+        {% if not user.is_authenticated %}
+        <li><a href="../accounts/register">Sign Up</a></li>
+        {% block login_side %}
+        <li><a href="../accounts/login">Login</a></li>
+        {% endblock %}
+        {% endif %}
+        {% if user.is_authenticated %}
+        <li><a href="../accounts/logout">Logout</a></li>
+        {% endif %}
+    </ul></nav>
     </header>
 <div class="mainContent">
     

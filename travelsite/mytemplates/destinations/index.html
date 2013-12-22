@@ -19,7 +19,142 @@ Far Sighted Travels | Home
 	{% endif %}
 	</content>
 </article>
-<article class="destlist">
+<article class = "top-content">
+<content>
+    <header><h2>World Map</h2><h3>Choose a country from the menu or dropdown.</h3></header>
+    <div id = "countrycontainer"></div>
+    <div id = "map"></div>
+    <script type="text/javascript">
+
+            //Width and height of SVG container for map
+            var container = $("#map");
+
+            var w = container.width(),
+            h = container.height(),
+            active;
+
+            var countrycontainer = $("#countrycontainer");
+            var country_w = countrycontainer.width(),
+            country_h = countrycontainer.height();
+
+            var color = d3.scale.category20();
+            //Define map projection
+            var projection = d3.geo.equirectangular()
+                                   .translate([w/2, h/2])
+                                   .scale([150])
+            //Define path generator
+            var path = d3.geo.path()
+                             .projection(projection)
+                             .pointRadius(1.1);
+                            
+
+            //Create SVG element
+            var svg = d3.select("#map")
+                        .append("svg")
+                        .attr("width", w)
+                        .attr("height", h);
+            var countrytipsvg = d3.select("#countrycontainer")
+                        .append("svg")
+                        .attr("width", country_w)
+                        .attr("height", country_h)
+
+
+            var tooltip = d3.select("#countrycontainer").append("div")
+                .attr("class", "tooltip");
+            {% load staticfiles %}
+            queue()
+                .defer(d3.json, "{% static "json/world.json" %}")
+                .defer(d3.tsv, "{% static "data/world-country-names.tsv" %}")
+                .await(ready);
+
+            svg.append("clipPath")                  //Make a new clipPath
+                .attr("id", "chart-area")           //Assign an ID
+                .append("rect")                     //Within the clipPath, create a new rect
+                //.attr("x", padding)                 //Set rect's position and size…
+                //.attr("y", padding)
+                .attr("width", w)// - padding * 3)
+                .attr("height", h)
+                .on("click",reset);// - padding *3)
+        var g = svg.append("g")
+
+            function ready(error, world) {
+                    var countries = topojson.feature(world, world.objects.worldcountries).features,
+                        neighbors = topojson.neighbors(world.objects.worldcountries.geometries);
+
+                  var country = g.selectAll(".country")
+                      .data(countries)
+                    .enter().insert("path")
+                      .attr("class", "country")
+                      .attr("d", path)
+                      .style("fill", function(d, i) { return color(d.color = d3.max(neighbors[i], function(n) { return countries[n].color; }) + 1 | 0); })
+                      .attr("clicked",false)
+                      .on("click",clickcountry);
+
+                  /*g.insert("path", ".graticule")
+                      .datum(topojson.mesh(world, world.objects.worldcountries, function(a, b) { return a !== b; }))
+                      .attr("class", "boundary")
+                      .attr("d", path);*/
+                 //var clicked = false;
+                  country
+                      .on("mousemove", function(d,i) {
+                        d3.select(this)
+                                .style("stroke","#00FF00").style("stroke-width","3px");
+                        var mouse = d3.mouse(svg.node()).map( function(d) {return parseInt(d)});
+                        tooltip
+                            .classed("hidden", false)
+                            .html(d.properties.name);
+                      })
+                      .on("mouseout",  function(d,i) {
+                        d3.select(this).style("stroke","#fff").style("stroke-width",".5px");
+                            tooltip.classed("hidden", true);
+                      });
+
+                };
+
+            d3.select(self.frameElement).style("height", h + "px");
+
+            function clickcountry(d) {
+                  if (active === d) return reset();
+                  g.selectAll(".active").classed("active", false);
+                  d3.select(this).classed("active", active = d);
+                 // g.selectAll(".cities").classed("clickable", true);
+                  var b = path.bounds(d);
+                  g.transition().duration(750).attr("transform",
+                      "translate(" + projection.translate() + ")"
+                      + "scale(" + .95 / Math.max((b[1][0] - b[0][0]) / w, (b[1][1] - b[0][1]) / h) + ")"
+                      + "translate(" + -(b[1][0] + b[0][0]) / 2 + "," + -(b[1][1] + b[0][1]) / 2 + ")");
+                  tooltip
+                            .classed("hidden", false)
+                            .html(d.properties.name);
+                }
+
+                function reset() {
+                  g.selectAll(".active").classed("active", active = false);
+                  //g.selectAll("clickable",false)
+                  g.transition().duration(750).attr("transform", "");
+                  tooltip
+                            .classed("hidden", true);
+                }
+
+            var chart = $("#chart-area"),
+            aspect = container.width() / container.height();
+
+            $(window).on("resize", function() {
+                var targetWidth = container.width();
+                svg.attr("width", targetWidth);
+                chart.attr("width", targetWidth);
+                svg.attr("height", Math.round(targetWidth / aspect))
+                chart.attr("height", Math.round(targetWidth / aspect));
+            }).trigger("resize");
+
+        </script>
+
+</content>
+</article>
+</div>
+	{% endblock %}
+{% block top-sidebar %}
+<aside class="destlist top-sidebar">
     <header><h2>Featured Destinations</h2></header>
     <ul>
     {% for destination in latest_destination_list %}
@@ -27,21 +162,6 @@ Far Sighted Travels | Home
     <a href="/destinations/{{ destination.id }}/">{{ destination.name }}</a></li>
     {% endfor %}
     </ul>
-</article></div>
-	{% endblock %}
-{% block top-sidebar %}
-<aside class="top-sidebar">
-	{% if not user.is_authenticated %}
-        <p><h3><a href="../accounts/register">Sign Up</a></h3></p>
-        <p>
-        {% block login_side %}
-        <h3><a href="../accounts/login">Login</a></h3><br />
-        {% endblock %}
-        </p>
-    {% endif %}
-    {% if user.is_authenticated %}
-    <p><a href="../accounts/logout">Logout</a></p>
-    {% endif %}
 </aside>
 
 {% endblock %}
